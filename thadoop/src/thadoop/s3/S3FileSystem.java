@@ -9,10 +9,13 @@ import java.util.List;
  * files and put files 
  */
 public class S3FileSystem {
-	public InputStream getFile(String fileName){
+	public InputStream getFile(FileMetaData fileMetaData){
 		return null;
 	}
-	public boolean putFile(File file){
+	public boolean putFile(FileMetaData fileMetaData,File file){
+		return false;
+	}
+	public boolean putFile(FileMetaData fileMetaData,File file,boolean isOverWrite){
 		return false;
 	}
 	public List<FileMetaData> getFileMetaData(String uri){

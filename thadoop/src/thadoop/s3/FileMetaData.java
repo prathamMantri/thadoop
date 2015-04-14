@@ -6,6 +6,7 @@ public class FileMetaData {
 	private String fileName;
 	private String filePath;
 	private InetAddress nodeIP;
+	private int fileSizeInMB;
 	
 	public String getFileName() {
 		return fileName;
@@ -24,6 +25,12 @@ public class FileMetaData {
 	}
 	public void setNodeIP(InetAddress nodeIP) {
 		this.nodeIP = nodeIP;
+	}
+	public int getFileSizeInMB() {
+		return fileSizeInMB;
+	}
+	public void setFileSizeInMB(int fileSizeInMB) {
+		this.fileSizeInMB = fileSizeInMB;
 	}
 	
 }
