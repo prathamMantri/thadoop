@@ -1,5 +1,7 @@
 package thadoop.jobtracker;
 
-public class JobClient {
+import thadoop.client.Client;
+
+public class JobClient extends Client{
 
 }

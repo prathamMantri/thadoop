@@ -1,5 +1,7 @@
 package thadoop.tasktracker;
 
-public class TaskClient {
+import thadoop.client.Client;
+
+public class TaskClient extends Client{
 
 }

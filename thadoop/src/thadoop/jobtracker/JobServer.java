@@ -1,5 +1,7 @@
 package thadoop.jobtracker;
 
-public class JobServer {
+import thadoop.server.Server;
+
+public class JobServer extends Server{
 
 }
