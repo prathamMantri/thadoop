@@ -2,6 +2,7 @@ package thadoop.s3;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.List;
 
 /*
  * A thin Interface to s3 to get 
@@ -14,6 +15,8 @@ public class S3FileSystem {
 	public boolean putFile(File file){
 		return false;
 	}
-	
+	public List<FileMetaData> getFileMetaData(String uri){
+		return null;
+	}
 	
 }
