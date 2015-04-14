@@ -1,5 +1,7 @@
 package thadoop.message;
 
-public class Message {
+import java.io.Serializable;
 
+public class Message implements Serializable{
+	public MessageID messageID;
 }
