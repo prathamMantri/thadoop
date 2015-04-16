@@ -1,5 +1,6 @@
 package test.main;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,19 +15,17 @@ import thadoop.s3.S3FileSystem;
  */
 public class MainClass {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		S3FileSystem s3FileSystem=new S3FileSystem();
-		s3FileSystem.getAWSConnection();
+		S3FileSystem s3FileSystem=new S3FileSystem("testpm");
+		
 		List<FileMetaData> metaDataObjects= new ArrayList<FileMetaData>();
-
-		metaDataObjects =s3FileSystem.getFileMetaData("testpm");
+		
+		metaDataObjects =s3FileSystem.getFileMetaData();
 		for(int i=0; i<metaDataObjects.size();i++)
 		{
-			s3FileSystem.getAWSConnection();
 			System.out.println(s3FileSystem.getFile(metaDataObjects.get(i)));
-
-		}
+}
 
 	}
 
