@@ -78,16 +78,9 @@ public class S3FileSystem {
 	public boolean putFile(FileMetaData fileMetaData,File file,boolean isOverWrite){
 		AmazonS3 s3 = getAWSConnection();
 		if(isOverWrite== true)
-		{
 			s3.putObject(new PutObjectRequest(fileMetaData.getFileBucket(), "output"+file.getName(), file));
-			//Logic of uploading the files into chunck.
-			//We will name it as Output1#fileName
-			//If there are more chunks of the file, will be named as Output#i#FileName, where i is 1....n.
 			return true;
-		}
-		else
-			
-		return false;
+		
 	}
 
 	public List<FileMetaData> getFileMetaData(){
