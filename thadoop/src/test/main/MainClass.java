@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import thadoop.cluster.AWSClusterStatus;
 import thadoop.s3.FileMetaData;
 import thadoop.s3.S3FileSystem;
 
@@ -16,16 +17,22 @@ import thadoop.s3.S3FileSystem;
 public class MainClass {
 
 	public static void main(String[] args) throws IOException {
+		
+		AWSClusterStatus awsclusterstatus = new AWSClusterStatus();
+		awsclusterstatus.getMaster();
+		awsclusterstatus.getSlaves();
+		
+		
 		// TODO Auto-generated method stub
-		S3FileSystem s3FileSystem=new S3FileSystem("testpm");
+		//S3FileSystem s3FileSystem=new S3FileSystem("testpm");
 		
-		List<FileMetaData> metaDataObjects= new ArrayList<FileMetaData>();
+		//List<FileMetaData> metaDataObjects= new ArrayList<FileMetaData>();
 		
-		metaDataObjects =s3FileSystem.getFileMetaData();
-		for(int i=0; i<metaDataObjects.size();i++)
-		{
-			System.out.println(s3FileSystem.getFile(metaDataObjects.get(i)));
-}
+		//metaDataObjects =s3FileSystem.getFileMetaData();
+		//for(int i=0; i<metaDataObjects.size();i++)
+		//{
+			//System.out.println(s3FileSystem.getFile(metaDataObjects.get(i)));
+//}
 
 	}
 
