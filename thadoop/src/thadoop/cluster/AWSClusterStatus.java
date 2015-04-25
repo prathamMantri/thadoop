@@ -1,5 +1,7 @@
 package thadoop.cluster;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,12 +32,11 @@ public class AWSClusterStatus extends ClusterStatus {
 		return ec2;
 	} 
 
-	private List<Node> getInstances(String key, String value)
+	private List<Node> getInstances(String key, String value) throws UnknownHostException
 	{
 
 		AmazonEC2 ec2= getAWSConnection();
 		List<Node> node = new ArrayList<Node>();
-
 		Iterator<Reservation> vReservations = ec2.describeInstances()
 				.getReservations().iterator();
 		//Step through all the reservations...
@@ -60,14 +61,14 @@ public class AWSClusterStatus extends ClusterStatus {
 						if(key.equals("Master") && value.equals("1"))
 						{
 
-							obj.setServerIP(vInstanceItem.getPublicIpAddress());
+							obj.setServerIP(InetAddress.getByName(vInstanceItem.getPublicIpAddress()));
 							obj.setNodeName(vInstanceItem.getInstanceId());
 							node.add(obj);
 							System.out.println(obj.getNodeName() + "Master");			
 						}
 						if(key.equals("Slave") && value.equals("1.1"))
 						{
-							obj.setClientIP(vInstanceItem.getPublicIpAddress());
+							obj.setClietIP(InetAddress.getByName(vInstanceItem.getPublicIpAddress()));
 							obj.setNodeName(vInstanceItem.getInstanceId());
 							node.add(obj);
 							System.out.println(obj.getNodeName() + "Slave");
@@ -79,12 +80,12 @@ public class AWSClusterStatus extends ClusterStatus {
 		return node;
 	}
 
-	public List<Node> getMaster(){
-		List<Node> node = new ArrayList<Node>();
-		node = getInstances("Master","1");
+	public Node getMaster() throws UnknownHostException{
+		Node node = new Node();
+		node = getInstances("Master","1").get(0);
 		return node;
 	}
-	public List<Node> getSlaves(){
+	public List<Node> getSlaves() throws UnknownHostException{
 		List<Node> node= new ArrayList<Node>();
 		node = getInstances("Slave","1.1");
 		return node;
