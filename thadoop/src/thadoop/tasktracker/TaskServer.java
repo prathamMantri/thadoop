@@ -2,6 +2,6 @@ package thadoop.tasktracker;
 
 import thadoop.server.Server;
 
-public class TaskServer extends Server{
-
+public class TaskServer{
+	
 }
