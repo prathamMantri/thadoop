@@ -1,8 +1,9 @@
 package thadoop.s3;
 
+import java.io.Serializable;
 import java.net.InetAddress;
 
-public class FileMetaData {
+public class FileMetaData implements Serializable {
 
 	private String fileName;
 	private String filePath;
