@@ -24,7 +24,7 @@ public class JobMessage extends Message {
 	public JobMessage(MessageID messageID,List<FileMetaData> fileMetaData,MapReduceMessage mapReduceMessage){
 		this.messageID = messageID;
 		this.fileMetaData = fileMetaData;
-		this.mapReduceMessage = mapReduceMessage;
+		this.setMapReduceMessage(mapReduceMessage);
 	}
 
 	public List<FileMetaData> getFileMetaData() {
@@ -64,5 +64,13 @@ public class JobMessage extends Message {
 
 	public void setTaskId(long taskId) {
 		this.taskId = taskId;
+	}
+
+	public MapReduceMessage getMapReduceMessage() {
+		return mapReduceMessage;
+	}
+
+	public void setMapReduceMessage(MapReduceMessage mapReduceMessage) {
+		this.mapReduceMessage = mapReduceMessage;
 	}
 }
