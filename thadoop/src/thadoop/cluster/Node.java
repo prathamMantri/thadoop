@@ -2,6 +2,8 @@ package thadoop.cluster;
 
 import java.net.InetAddress;
 
+import com.amazonaws.services.ec2.model.InstanceState;
+
 public class Node {
 	
 	private String nodeName;
@@ -40,5 +42,7 @@ public class Node {
 	public void setClientPort(int clientPort) {
 		this.clientPort = clientPort;
 	}
+
+	
 	
 }
