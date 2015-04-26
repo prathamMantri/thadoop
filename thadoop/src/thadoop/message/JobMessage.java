@@ -10,6 +10,7 @@ import thadoop.s3.FileMetaData;
  * - Mapper JOB
  * - Reducer JOB
  * The type of job can be Identified from MessageId variable
+ *
  */
 public class JobMessage extends Message {
 	
