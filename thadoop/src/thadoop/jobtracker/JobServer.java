@@ -2,7 +2,6 @@ package thadoop.jobtracker;
 
 import thadoop.debug.Debug;
 import thadoop.server.Server;
-
 public class JobServer{
 	
 	public boolean startJobServer(){

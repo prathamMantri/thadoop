@@ -59,7 +59,7 @@ public class JobServerThread extends Server{
 				Message message = (Message) is.readObject();
 				Debug.debug("a message received at job server");
 				switch(message.messageID){
-					
+					//start a thread
 				}	
 				//(new ProcessThread(clientSocket,this.fileList)).start();
 			}
