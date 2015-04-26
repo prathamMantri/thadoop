@@ -20,6 +20,8 @@ public class JobMessage extends Message {
 	private MapReduceMessage mapReduceMessage;
 	private Path inputPath;
 	private Path outputPath;
+	private long noOfMappers;
+	private long noOfReducers;
 	
 	public JobMessage(MessageID messageID,List<FileMetaData> fileMetaData,MapReduceMessage mapReduceMessage){
 		this.messageID = messageID;
@@ -73,4 +75,21 @@ public class JobMessage extends Message {
 	public void setMapReduceMessage(MapReduceMessage mapReduceMessage) {
 		this.mapReduceMessage = mapReduceMessage;
 	}
+
+	public long getNoOfMappers() {
+		return noOfMappers;
+	}
+
+	public void setNoOfMappers(long noOfMappers) {
+		this.noOfMappers = noOfMappers;
+	}
+
+	public long getNoOfReducers() {
+		return noOfReducers;
+	}
+
+	public void setNoOfReducers(long noOfReducers) {
+		this.noOfReducers = noOfReducers;
+	}
+	
 }
