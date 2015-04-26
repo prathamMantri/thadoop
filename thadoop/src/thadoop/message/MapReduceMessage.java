@@ -30,22 +30,5 @@ public class MapReduceMessage extends Message{
 		public void setMapreduce(MapReduce mapreduce) {
 			this.mapreduce = mapreduce;
 		}
-		
-	    public boolean equals(Object o) {
-	        if (this == o) return true;
-	        if (o == null || getClass() != o.getClass()) return false;
-	        
-	        MapReduceMessage MRMessage = (MapReduceMessage) o;
-	        
-	        if (messageID != MRMessage.messageID) return false;
-	        
-	        return true;
-	    }
-	    
-	   
-	    
-	    public String toString() {
-	        return "MessageID = " + getId() + "Mapreduce Object = " + getMapreduce();
-	    }
 	}
 
