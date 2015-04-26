@@ -16,12 +16,14 @@ public class JobMessage extends Message {
 	private long jobId;
 	private long taskId;
 	private List<FileMetaData> fileMetaData;
+	private MapReduceMessage mapReduceMessage;
 	private Path inputPath;
 	private Path outputPath;
 	
-	public JobMessage(MessageID messageID,List<FileMetaData> fileMetaData){
+	public JobMessage(MessageID messageID,List<FileMetaData> fileMetaData,MapReduceMessage mapReduceMessage){
 		this.messageID = messageID;
 		this.fileMetaData = fileMetaData;
+		this.mapReduceMessage = mapReduceMessage;
 	}
 
 	public List<FileMetaData> getFileMetaData() {
