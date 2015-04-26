@@ -1,16 +1,19 @@
 package thadoop.debug;
 
 public class Debug {
-	public static void printDebugMessage(String message){
+	public static void message(String message){
 		System.out.println(message);
 	}
-	public static void printErrorMessage(String message){
+	public static void errorMessage(String message){
 		System.out.println(message);
 	}
-	public static void printWarningMessage(String message){
+	public static void warningMessage(String message){
 		System.out.println(message);
 	}
-	public static void printInfoMessage(String message){
+	public static void infoMessage(String message){
 		System.out.println(message);
+	}
+	public static void debug(String message){
+		System.out.print(message);
 	}
 }
