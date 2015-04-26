@@ -6,11 +6,11 @@ import thadoop.server.Server;
 public class JobServer{
 	
 	public boolean startJobServer(){
-		Debug.printDebugMessage("server Stopped");
+		Debug.infoMessage("server Stopped");
 		return false;
 	}
 	public boolean stopJobServer(){
-		Debug.printDebugMessage("server Started");
+		Debug.infoMessage("server Started");
 		return false;
 		
 	}
