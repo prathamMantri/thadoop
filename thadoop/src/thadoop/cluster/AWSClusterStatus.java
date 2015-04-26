@@ -58,20 +58,22 @@ public class AWSClusterStatus extends ClusterStatus {
 					//if the tag key macthes and the value we're looking for, we return
 					if (item.getKey().equals(key) 
 							&& item.getValue().equals(value)) {
-						if(key.equals("Master") && value.equals("1"))
+						if(vInstanceItem.getState().getName().matches("running"))
 						{
+							if(key.equals("Master") && value.equals("1"))
+							{
 
-							obj.setServerIP(InetAddress.getByName(vInstanceItem.getPublicIpAddress()));
-							obj.setNodeName(vInstanceItem.getInstanceId());
-							node.add(obj);
-							System.out.println(obj.getNodeName() + "Master");			
-						}
-						if(key.equals("Slave") && value.equals("1.1"))
-						{
-							obj.setClietIP(InetAddress.getByName(vInstanceItem.getPublicIpAddress()));
-							obj.setNodeName(vInstanceItem.getInstanceId());
-							node.add(obj);
-							System.out.println(obj.getNodeName() + "Slave");
+								obj.setServerIP(InetAddress.getByName(vInstanceItem.getPublicIpAddress()));
+								obj.setNodeName(vInstanceItem.getInstanceId());
+								node.add(obj);
+								break;
+							}
+							if(key.equals("Slave") && value.equals("0"))
+							{
+								obj.setClietIP(InetAddress.getByName(vInstanceItem.getPublicIpAddress()));
+								obj.setNodeName(vInstanceItem.getInstanceId());
+								node.add(obj);	
+							}
 						}
 					}
 				}
@@ -87,7 +89,7 @@ public class AWSClusterStatus extends ClusterStatus {
 	}
 	public List<Node> getSlaves() throws UnknownHostException{
 		List<Node> node= new ArrayList<Node>();
-		node = getInstances("Slave","1.1");
+		node = getInstances("Slave","0");
 		return node;
 	}
 }
