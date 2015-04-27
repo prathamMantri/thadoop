@@ -8,8 +8,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.Map;
 
 import thadoop.debug.Debug;
+import thadoop.message.JobMessage;
 import thadoop.message.Message;
 import thadoop.server.Server;
 
@@ -18,10 +21,14 @@ public class JobServerThread extends Server{
 	private boolean stopFlag;
 	private ServerSocket serverSocket;
 	private InetAddress myIp;
+	private long jobId;
+	private Map<Long,ExecMapReduce> mapReduceObj;
 	
 	JobServerThread(int portNumber){
 		this.portNumber = portNumber;
 		this.stopFlag = false;
+		this.jobId = 1;
+		this.mapReduceObj = new HashMap<Long,ExecMapReduce>();
 	}
 	
 	/*
@@ -60,8 +67,25 @@ public class JobServerThread extends Server{
 				Debug.debug("a message received at job server");
 				switch(message.messageID){
 					//start a thread
+				case MAPREDUCE_JOB:
+					this.jobId++;
+					ExecMapReduce mr = new ExecMapReduce(this.jobId,message);
+					this.mapReduceObj.put(this.jobId, mr);
+					mr.processJob();
+					break;
+				case MAPPER_JOB_REPLY:
+					JobMessage jmm = (JobMessage) message;
+					ExecMapReduce emm = this.mapReduceObj.get(jmm.getJobId());
+					emm.updateTaskStatusForMappers(jmm.getTaskId());
+					break;
+				case REDUCER_JOB_REPLY:
+					JobMessage jmr = (JobMessage) message;
+					ExecMapReduce emr = this.mapReduceObj.get(jmr.getJobId());
+					emr.updateTaskStatusForMappers(jmr.getTaskId());
+					break;
+				default:
+					break;
 				}	
-				//(new ProcessThread(clientSocket,this.fileList)).start();
 			}
 		}catch (SocketTimeoutException e){
 			
