@@ -30,20 +30,14 @@ public class FileMetaData implements Serializable {
 		public void setNodeIP(InetAddress nodeIP) {
 			this.nodeIP = nodeIP;
 		}
-		public long getFileSizeInMB() {
+		public long getFileSizeInKB() {
 			return fileSizeInMB;
 		}
-		public void setFileSizeInMB(long fileSizeInMB) {
+		public void setFileSizeInKB(long fileSizeInMB) {
 			this.fileSizeInMB = fileSizeInMB;
 		}
 		
-		public String getFileBucket() {
-			return bucketName;
-		}
-		public void setFileBucket(String bucketName) {
-			this.bucketName = bucketName;
-			
-		}	
+	
 	}
 
 
