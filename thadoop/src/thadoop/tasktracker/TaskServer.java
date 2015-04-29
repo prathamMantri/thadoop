@@ -6,38 +6,36 @@ import thadoop.server.Server;
 
 public class TaskServer{
 	
-private TaskServerThread jobServerThread;
+private TaskServerThread taskServerThread;
 	
 	public TaskServer(int portNumber){
-		this.jobServerThread = new TaskServerThread(portNumber);
+		this.taskServerThread = new TaskServerThread(portNumber);
 	}
 	
-	public boolean startJobServer(){
-		Debug.infoMessage("starting job server");
-		if(jobServerThread.isAlive()){
-			Debug.infoMessage("job server is already running");
+	public boolean startTaskServer(){
+		Debug.infoMessage("starting task server");
+		if(taskServerThread.isAlive()){
+			Debug.infoMessage("task server is already running");
 			return false;
 		}
-		this.jobServerThread.start();
-		Debug.infoMessage("job server started");
+		this.taskServerThread.start();
+		Debug.infoMessage("task server started");
 		return true;
 	}
 	public void stopServer(){
 		Debug.infoMessage("Stopping Server....");
-		if(!jobServerThread.isAlive()){
+		if(!taskServerThread.isAlive()){
 			Debug.infoMessage("Server is already stopped ");
 			return;
 		}
-		this.jobServerThread.stopMe();
+		this.taskServerThread.stopMe();
 	}
 	public void isServerAlive(){
-		if(this.jobServerThread.isAlive()){
+		if(this.taskServerThread.isAlive()){
 			Debug.infoMessage("Yes");
 			
 		}else{
 			Debug.infoMessage("No");
 		}
 	}
-	
-	
 }
